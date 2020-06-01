@@ -1,5 +1,3 @@
-# bufanapp
-
 初始化项目：添加基本配置
 ## Project setup
 ```
