@@ -1,6 +1,5 @@
 import { login, getInfo } from '@/request/api/login';
 import { getToken, setToken, removeToken, setSessionStorage, removeSessionStorage } from '@/utils/cookie';
-import { Message } from 'element-ui';
 
 const user = {
   state: {
@@ -22,17 +21,12 @@ const user = {
     userLogin ({ commit }, loginInfo) {
       return new Promise((resolve, reject) => {
         login(JSON.stringify(loginInfo)).then(res => {
-          console.log(res);
           if (res.code !== 1) {
-            Message({
-              showClose: true,
-              message: res.msg
-            });
             reject(res);
           } else {
             setToken(res.data.token);
-            debugger
             commit('set_token', res.data.token);
+            commit('set_userInfo', res.data.userInfo)
             setSessionStorage('userInfo', JSON.stringify(res.data.userInfo));
             resolve();
           }
@@ -47,6 +41,7 @@ const user = {
       return new Promise((resolve, reject) => {
         getInfo().then(res => {
           if (res.code === 1) {
+            commit('set_userInfo', res.data.userInfo)
             setSessionStorage('userInfo', JSON.stringify(res.data.userInfo));
             resolve();
           } else {
@@ -68,6 +63,9 @@ const user = {
       });
     }
 
+  },
+  getters: {
+    userInfo: state => state.userInfo
   }
 };
 

@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
     if (whiteList.indexOf(to.path) !== -1) {
       next({ path: '/' });
     } else {
-      if (getSessionStorage('userInfo') == null) {
+      if (Object.keys(store.getters.userInfo).length === 0) {
         store.dispatch('getUserInfo').then(res => {
           next({ ...to });
         }).catch(res => {

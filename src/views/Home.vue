@@ -1,13 +1,13 @@
 <template>
   <div class="p-wrap">
     <p>登录账号：{{userInfo.name}}</p>
-    <el-button type="primary" @click="logout">退出登录</el-button>
+    <button type="primary" @click="logout">退出登录</button>
   </div>
 </template>
 
 <script>
 import { getSessionStorage } from '../utils/cookie';
-import { Message } from 'element-ui';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'home',
@@ -17,9 +17,12 @@ export default {
     };
   },
   computed: {
-    userInfo: function () {
-      return JSON.parse(getSessionStorage('userInfo'));
-    }
+    // userInfo: function () {
+    //   return JSON.parse(getSessionStorage('userInfo'));
+    // }
+    ...mapGetters([
+      'userInfo'
+    ])
   },
   methods: {
     logout: function () {
