@@ -12,7 +12,7 @@ module.exports = {
    * baseUrl: process.env.NODE_ENV==='production'?"https://cdn.didabisai.com/front/":'front/',
    */
   // 基本路径
-  publicPath: process.env.NODE_ENV === 'production' ? '/web/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   // 输出文件目录
   outputDir: 'dist',
   assetsDir: '', // 放置生成的静态资源(s、css、img、fonts)的(相对于 outputDir 的)目录(默认'')

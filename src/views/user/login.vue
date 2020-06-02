@@ -61,6 +61,7 @@ export default {
     },
     /** 处理发送验证码 */
     handleSendCode () {
+      if (!this.canClick) return // 改动的是这两行代码
       var formData = JSON.stringify({
         'target': this.form.mobile,
         'vcode_type': 'register'
@@ -80,7 +81,6 @@ export default {
     },
     /** 倒计时 */
     countDown () {
-      if (!this.canClick) return // 改动的是这两行代码
       this.canClick = false
       this.verifyText = this.totalTime + 's后重新发送'
       var clock = window.setInterval(() => {
@@ -94,8 +94,8 @@ export default {
         }
       }, 1000)
 
-      this.$once('hook:beforeDestroy', () => {            
-        clearInterval(clock);                                    
+      this.$once('hook:beforeDestroy', () => {
+        clearInterval(clock)
       })
     },
 
@@ -107,6 +107,8 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+@import 'assets/css/base/variable';
+
 $bg:#2d3a4b;
 $dark_gray:#889aa4;
 $light_gray:#eee;
@@ -176,7 +178,7 @@ $light_gray:#eee;
       justify-items: center;
       align-items: center;
       span{
-        color: #fcfd06;
+        color: $color-theme;
       }
     }
     .disabled{

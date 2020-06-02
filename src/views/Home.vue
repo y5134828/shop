@@ -1,13 +1,13 @@
 <template>
   <div class="p-wrap">
-    <p>登录账号：{{userInfo.name}}</p>
-    <button type="primary" @click="logout">退出登录</button>
+    <search :username="userInfo.name?userInfo.name:''"></search>
   </div>
 </template>
 
 <script>
-import { getSessionStorage } from '../utils/cookie';
+import { Message } from 'element-ui';
 import { mapGetters } from 'vuex';
+import search from 'components/search';
 
 export default {
   name: 'home',
@@ -16,10 +16,10 @@ export default {
 
     };
   },
+  components: {
+    search
+  },
   computed: {
-    // userInfo: function () {
-    //   return JSON.parse(getSessionStorage('userInfo'));
-    // }
     ...mapGetters([
       'userInfo'
     ])

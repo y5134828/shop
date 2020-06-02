@@ -98,3 +98,10 @@
       background: transparent;
   }
 }
+
+@mixin bg-image($url, $postfix) {
+  background-image: url($ulr + '2x.' + $postfix);
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3) {
+    background-image: url($ulr + '3x.' + $postfix);
+  }
+}

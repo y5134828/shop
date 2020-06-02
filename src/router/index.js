@@ -41,7 +41,7 @@ router.beforeEach((to, from, next) => {
       }
     };
   } else {
-    if (whiteList.indexOf(to.path) !== -1) {
+    if (whiteList.indexOf(to.path) !== -1 || to.path === '/') {
       next();
     } else {
       next(`/user/login?redirect=${to.path}`); // 否则全部重定向到登录页
