@@ -1,23 +1,32 @@
 <template>
   <div class="p-wrap">
     <search :username="userInfo.name?userInfo.name:''"></search>
+    <swiper :slides="slides"></swiper>
+    <p ref="p">{{message}}</p>
+    <button @click="changeMessage">changeMessage</button>
   </div>
 </template>
 
 <script>
-import { Message } from 'element-ui';
 import { mapGetters } from 'vuex';
 import search from 'components/search';
+import swiper from 'components/swiper';
 
 export default {
   name: 'home',
   data () {
     return {
-
+      message: '改变前',
+      slides: [
+        'https://imgcps.jd.com/ling4/100002427783/5raI5pqR5Yip5Zmo/5Yaw54i95LiA5aSP/p-5d91a4f642dd5b7c7d52cbde/63fedfc5/cr/s1125x690/q70.jpg',
+        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/115456/40/7331/100669/5ec3a9c6E3dcbadb7/46071c04455c0d5b.jpg!q70.jpg.dpg',
+        'https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/120812/7/3969/413085/5ed753c3E64c4f5d6/f0886e3be069bf66.png!q70.jpg.dpg'
+      ]
     };
   },
   components: {
-    search
+    search,
+    swiper
   },
   computed: {
     ...mapGetters([
@@ -25,12 +34,11 @@ export default {
     ])
   },
   methods: {
-    logout: function () {
-      this.$store.dispatch('userLogOut').then(res => {
-        location.reload() // 为了重新实例化vue-router对象 避免bug
-      }).catch(err => {
-        Message.error(err || '退出失败，请重试');
-      })
+    changeMessage: async function () {
+      this.message = '改变后'
+      console.log(this.$refs.p.innerHTML + '----' + this.message)
+      await this.$nextTick;
+      console.log(this.$refs.p.innerHTML + '----' + this.message)
     }
   }
 

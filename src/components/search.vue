@@ -5,7 +5,7 @@
     </div>
     <div class="center">
       <input placeholder="请输入搜索内容" />
-      <img class="search-icon" src="@/assets/img/logo.png">
+      <span class="search-icon iconfont icon-xingtaiduICON_sousuo---copy" ></span>
     </div>
     <div class="right">
       <span v-if="username">{{username}}</span>
@@ -55,12 +55,12 @@ export default {
       border-radius: 15px;
     }
     .search-icon{
-      width: 25px;
-      height: 25px;
+      font-size: 22px;
       position: absolute;
       right: 15px;
       z-index: 2;
-      top: 12px;
+      top: 2px;
+      color: $color-sub-theme;
     }
   }
   .right{
