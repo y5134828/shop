@@ -1,9 +1,7 @@
 <template>
   <div class="p-wrap">
-    <search :username="userInfo.name?userInfo.name:''"></search>
+    <search :username="userInfo.name?userInfo.name:''" :isIndex="true"></search>
     <swiper :slides="slides"></swiper>
-    <p ref="p">{{message}}</p>
-    <button @click="changeMessage">changeMessage</button>
   </div>
 </template>
 
@@ -34,12 +32,7 @@ export default {
     ])
   },
   methods: {
-    changeMessage: async function () {
-      this.message = '改变后'
-      console.log(this.$refs.p.innerHTML + '----' + this.message)
-      await this.$nextTick;
-      console.log(this.$refs.p.innerHTML + '----' + this.message)
-    }
+
   }
 
 };

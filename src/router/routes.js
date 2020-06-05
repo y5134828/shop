@@ -20,6 +20,22 @@ const routes = [
     }
   },
   {
+    path: '/search/index',
+    name: 'search',
+    component: load('search/search'),
+    meta: {
+      title: '搜索'
+    }
+  },
+  {
+    path: '/goods/list',
+    component: load('goods/list'),
+    name: 'goodsList',
+    meta: {
+      title: '商品列表'
+    }
+  },
+  {
     path: '*',
     redirect: {
       path: '/'

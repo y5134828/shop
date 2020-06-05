@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router/index';
 import store from './store/index';
+import FastClick from 'fastclick';
 import 'element-ui/lib/theme-chalk/index.css'; // ele整体样式
 import 'css/base/element_theme.scss'; // ele主题样式
 import 'assets/css/base/base.scss'; // 基础样式
@@ -15,6 +16,7 @@ import 'assets/css/base/base.scss'; // 基础样式
 
 Vue.config.productionTip = false;
 
+FastClick.attach(document.body); // 移动端300ms延迟
 // Vue.use(ElementUI);
 process.env.VUE_APP_MOCK && require('@/mock/mock');// 在测试中使用Mockjs
 

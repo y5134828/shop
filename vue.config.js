@@ -35,7 +35,7 @@ module.exports = {
         'images': resolve('src/assets/images'),
         'views': resolve('src/views'),
         'components': resolve('src/components'),
-        'api': resolve('src/api'),
+        'request': resolve('src/request'),
         'mixins': resolve('src/mixins'),
         'store': resolve('src/store'),
         'utils': resolve('src/utils')

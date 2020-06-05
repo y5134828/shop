@@ -4,9 +4,7 @@
  */
 import axios from 'axios';
 import store from '../store/index';
-import {
-  getToken
-} from '@/utils/cookie';
+import { getToken } from '@/utils/cookie';
 import {
   Message,
   MessageBox
