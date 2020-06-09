@@ -36,6 +36,14 @@ const routes = [
     }
   },
   {
+    path: '/goods/info',
+    component: load('goods/info'),
+    name: 'goodsInfo',
+    meta: {
+      title: '商品详情'
+    }
+  },
+  {
     path: '*',
     redirect: {
       path: '/'
