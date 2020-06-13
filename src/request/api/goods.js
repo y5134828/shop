@@ -7,3 +7,11 @@ export function goodsList (data) {
     data: data
   })
 }
+
+export function goodsInfo (data) {
+  return request({
+    url: 'goods/info',
+    method: 'post',
+    data: data
+  })
+}
