@@ -30,11 +30,19 @@ const goodsInfo = {
     'banner|3': [Random.image('750x480', '#ffcc33', '#FFF', 'png', Random.csentence(2, 5))],
     price: Random.float(5, 999, 1, 2),
     num: Random.integer(1, 999),
-    address: Random.city(true)
+    address: Random.city(true),
+    favorite: Random.boolean()
   }
-}
+};
+
+const changeFavorite = {
+  code: 1,
+  msg: 'success',
+  data: {}
+};
 
 export {
   goodsList,
-  goodsInfo
+  goodsInfo,
+  changeFavorite
 };

@@ -15,3 +15,11 @@ export function goodsInfo (data) {
     data: data
   })
 }
+
+export function changeFavorite (data) {
+  return request({
+    url: 'goods/changeFavorite',
+    method: 'post',
+    data: data
+  })
+}
