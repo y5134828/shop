@@ -22,7 +22,15 @@
         <span>{{goodsInfo.address}}</span>
       </div>
     </div>
-
+    <div class="bottom">
+      <div class="item flex1" @click="joinCar">
+        <span class="iconfont icon-qicheqianlian-"></span>
+        <span>购物车</span>
+      </div>
+      <div class="item flex3">
+        <span>立即购买</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -42,13 +50,13 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'favorite'
+      'favorite',
+      'goodsCar'
     ])
   },
   created () {
     let id = this.$route.query.id
     goodsInfo({ id: id }).then(res => {
-      console.log(res)
       if (res.code === 1) {
         this.goodsInfo = res.data
         if (res.data.favorite) {
@@ -66,7 +74,28 @@ export default {
         alert(ret)
       })
     },
+    joinCar () {
+      let goodsCar = JSON.parse(JSON.stringify(this.goodsCar))
+      let hasJoin = false
+      let goods = {
+        id: this.$route.query.id,
+        num: 1
+      }
+      goodsCar.forEach(row => {
+        if (row.id && row.id === this.$route.query.id) {
+          hasJoin = true
+          row.num += 1
+        }
+      });
+      if (!hasJoin) goodsCar.push(goods)
+      this.changeCar(goodsCar).then((res) => {
+        alert('加入购物车成功')
+      }).catch(ret => {
+        alert(ret.message)
+      })
+    },
     ...mapActions([
+      'changeCar',
       'setFavoite',
       'changeFavorite'
     ])
@@ -110,6 +139,39 @@ export default {
       color: #666;
       margin-top: 10px;
     }
+  }
+  .amount{
+    display: flex;
+    justify-content: space-between;
+    padding:0px 15px 10px;
+    border-bottom: 1px solid #efefef;
+  }
+}
+.bottom{
+  position: fixed;
+  display: flex;
+  height: 44px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  .flex1{
+    flex: 1;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    color: #e93b3d;
+    .iconfont{
+      font-size: 18px;
+    }
+  }
+  .flex3{
+    flex: 3;
+    line-height: 44px;
+    background-color: #e93b3d;
+    color: #FFF;
   }
 }
 </style>

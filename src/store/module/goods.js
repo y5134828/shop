@@ -6,7 +6,7 @@ const goods = {
     favorites: false
   },
   mutations: {
-    _changCar: (state, list) => {
+    _changeCar: (state, list) => {
       state.goodsCar = list
     },
     _setFavorites: (state) => {
@@ -17,8 +17,8 @@ const goods = {
     }
   },
   actions: {
-    changCar: ({ commit, state }, list) => {
-      commit('_changCar', list)
+    changeCar: ({ commit, state }, list) => {
+      commit('_changeCar', list)
     },
     setFavoite: ({ commit }) => {
       commit('_setFavorites')
@@ -38,7 +38,8 @@ const goods = {
     }
   },
   getters: {
-    favorite: state => state.favorites
+    favorite: state => state.favorites,
+    goodsCar: state => state.goodsCar
   }
 
 }
