@@ -1,9 +1,9 @@
 <template>
   <div>
-    <router-view/>
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
